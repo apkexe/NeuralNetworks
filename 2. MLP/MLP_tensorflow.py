@@ -116,25 +116,25 @@ incorrect_indices = np.where(y_pred != y_test.flatten())[0]
 
 def plot_single_example(idx, title):
     plt.figure(figsize=(3, 3))
-    plt.imshow(x_test[idx].reshape(32, 32, 3))  # Αναδιάταξη της εικόνας
+    plt.imshow(x_test[idx].reshape(32, 32, 3))  # img reshape
     plt.title(title, fontsize=12)
     plt.axis("off")
     plt.show()
 
 if len(correct_indices) > 0:
-    correct_idx = correct_indices[0]  # Επιλέγουμε το πρώτο σωστό παράδειγμα
+    correct_idx = correct_indices[0]  # choose the 1st correct
     plot_single_example(
         correct_idx,
         title=f"Correct\nTrue: {labels[y_test.flatten()[correct_idx]]}\nPred: {labels[y_pred[correct_idx]]}"
     )
 else:
-    print("Δεν υπάρχουν σωστές προβλέψεις για εμφάνιση.")
+    print("There are no correct predictions to show.")
 
 if len(incorrect_indices) > 0:
-    incorrect_idx = incorrect_indices[0]  # Επιλέγουμε το πρώτο λανθασμένο παράδειγμα
+    incorrect_idx = incorrect_indices[0]  # choose the 1st incorrect
     plot_single_example(
         incorrect_idx,
         title=f"Incorrect\nTrue: {labels[y_test.flatten()[incorrect_idx]]}\nPred: {labels[y_pred[incorrect_idx]]}"
     )
 else:
-    print("Δεν υπάρχουν λανθασμένες προβλέψεις για εμφάνιση.")
+    print("There are no incorrect predictions to show.")
